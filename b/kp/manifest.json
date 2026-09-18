@@ -1,0 +1,70 @@
+{
+  "slug": "коммерческое-предложение-5e0828ef185c",
+  "publicSlug": "коммерческое-предложение-5e0828ef185c",
+  "url": "./",
+  "title": "Коммерческое предложение и Договор на разработку AR-приложения",
+  "pageCount": 3,
+  "page": {
+    "width": 911,
+    "height": 1288
+  },
+  "pages": [
+    {
+      "index": 1,
+      "thumb": "./pages/thumb/page-1.jpg",
+      "normal": "./pages/normal/page-1.jpg",
+      "large": "./pages/large/page-1.jpg",
+      "id": "page-e5e64531-812f-4c30-b8cb-82ebee411298",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 2,
+      "thumb": "./pages/thumb/page-2.jpg",
+      "normal": "./pages/normal/page-2.jpg",
+      "large": "./pages/large/page-2.jpg",
+      "id": "page-96d5c6a1-298f-4a6a-b621-51d8fce8b170",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 3,
+      "thumb": "./pages/thumb/page-3.jpg",
+      "normal": "./pages/normal/page-3.jpg",
+      "large": "./pages/large/page-3.jpg",
+      "id": "page-eedf1741-f499-45d4-8168-80ff8e24b73b",
+      "background": "#ffffff",
+      "elements": []
+    }
+  ],
+  "pdfUrl": "./source.pdf",
+  "createdAt": 1789723805321,
+  "updatedAt": 1789723805628,
+  "published": true,
+  "toc": [],
+  "settings": {
+    "flipSound": true,
+    "flipDuration": 800,
+    "hardCover": true,
+    "rtl": false,
+    "singlePageMode": "auto",
+    "bgColor": "#2b2b2b",
+    "bgColor2": "#161616",
+    "accent": "#1e40af",
+    "showThumbnails": true,
+    "allowDownload": true,
+    "allowPrint": true,
+    "autoFlipSeconds": 0,
+    "backgroundImage": null,
+    "logoUrl": null,
+    "logoLink": null,
+    "logoWidth": 120
+  },
+  "links": [],
+  "sfx": {
+    "flip": [
+      "/assets/sfx/flip.mp3"
+    ],
+    "hard": null
+  }
+}

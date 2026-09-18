@@ -1,0 +1,270 @@
+{
+  "slug": "каталог-2026-тест-cb7e2b137961",
+  "publicSlug": "каталог-2026-тест-cb7e2b137961",
+  "url": "./",
+  "title": "??????? 2026 ???????????",
+  "pageCount": 24,
+  "page": {
+    "width": 910,
+    "height": 1287
+  },
+  "pages": [
+    {
+      "index": 1,
+      "thumb": "./pages/thumb/page-1.jpg",
+      "normal": "./pages/normal/page-1.jpg",
+      "large": "./pages/large/page-1.jpg",
+      "id": "page-629a1792-4651-4a29-8813-a12158f4f189",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 2,
+      "thumb": "./pages/thumb/page-2.jpg",
+      "normal": "./pages/normal/page-2.jpg",
+      "large": "./pages/large/page-2.jpg",
+      "id": "page-4d611e22-1d39-4ce3-a118-19f100033640",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 3,
+      "thumb": "./pages/thumb/page-3.jpg",
+      "normal": "./pages/normal/page-3.jpg",
+      "large": "./pages/large/page-3.jpg",
+      "id": "page-728fdbb1-16c3-4699-9a10-897a9956c599",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 4,
+      "thumb": "./pages/thumb/page-4.jpg",
+      "normal": "./pages/normal/page-4.jpg",
+      "large": "./pages/large/page-4.jpg",
+      "id": "page-a166042b-0aa4-41f9-a7ca-652b504d13a0",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 5,
+      "thumb": "./pages/thumb/page-5.jpg",
+      "normal": "./pages/normal/page-5.jpg",
+      "large": "./pages/large/page-5.jpg",
+      "id": "page-8637210e-ee37-4ac6-9b66-04eed26ba89b",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 6,
+      "thumb": "./pages/thumb/page-6.jpg",
+      "normal": "./pages/normal/page-6.jpg",
+      "large": "./pages/large/page-6.jpg",
+      "id": "page-1fa5a3f4-58a7-4c3b-a0b0-b1a9475cfcbd",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 7,
+      "thumb": "./pages/thumb/page-7.jpg",
+      "normal": "./pages/normal/page-7.jpg",
+      "large": "./pages/large/page-7.jpg",
+      "id": "page-e1c8dffd-75d8-458a-8dfd-6feeae30909f",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 8,
+      "thumb": "./pages/thumb/page-8.jpg",
+      "normal": "./pages/normal/page-8.jpg",
+      "large": "./pages/large/page-8.jpg",
+      "id": "page-de3bff8d-88c3-4fd8-b273-c492a8e8a921",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 9,
+      "thumb": "./pages/thumb/page-9.jpg",
+      "normal": "./pages/normal/page-9.jpg",
+      "large": "./pages/large/page-9.jpg",
+      "id": "page-96085e40-575f-418d-a2f3-31df78cbbb7a",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 10,
+      "thumb": "./pages/thumb/page-10.jpg",
+      "normal": "./pages/normal/page-10.jpg",
+      "large": "./pages/large/page-10.jpg",
+      "id": "page-179142fc-a69e-488c-92f1-3dddcbc2afd0",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 11,
+      "thumb": "./pages/thumb/page-11.jpg",
+      "normal": "./pages/normal/page-11.jpg",
+      "large": "./pages/large/page-11.jpg",
+      "id": "page-b505dd15-3b3e-49db-a372-cbadcb5e44f4",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 12,
+      "thumb": "./pages/thumb/page-12.jpg",
+      "normal": "./pages/normal/page-12.jpg",
+      "large": "./pages/large/page-12.jpg",
+      "id": "page-fb8af049-a1d8-4ea0-941d-9e513aca0a3e",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 13,
+      "thumb": "./pages/thumb/page-13.jpg",
+      "normal": "./pages/normal/page-13.jpg",
+      "large": "./pages/large/page-13.jpg",
+      "id": "page-1524a86c-4c4f-482f-afce-d9304b76a1e8",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 14,
+      "thumb": "./pages/thumb/page-14.jpg",
+      "normal": "./pages/normal/page-14.jpg",
+      "large": "./pages/large/page-14.jpg",
+      "id": "page-f637bbf1-0608-434a-b99f-b9777c1ed7be",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 15,
+      "thumb": "./pages/thumb/page-15.jpg",
+      "normal": "./pages/normal/page-15.jpg",
+      "large": "./pages/large/page-15.jpg",
+      "id": "page-863f23d1-1d88-4cdf-93b6-4bd6cf1242b8",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 16,
+      "thumb": "./pages/thumb/page-16.jpg",
+      "normal": "./pages/normal/page-16.jpg",
+      "large": "./pages/large/page-16.jpg",
+      "id": "page-9d6f1900-2ead-4431-a5f9-f9f5e50e630b",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 17,
+      "thumb": "./pages/thumb/page-17.jpg",
+      "normal": "./pages/normal/page-17.jpg",
+      "large": "./pages/large/page-17.jpg",
+      "id": "page-4df585a3-81ec-4e9a-8ccf-cf0846a75ba9",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 18,
+      "thumb": "./pages/thumb/page-18.jpg",
+      "normal": "./pages/normal/page-18.jpg",
+      "large": "./pages/large/page-18.jpg",
+      "id": "page-f3e09ae5-b036-4778-a173-ac06c4cfa80a",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 19,
+      "thumb": "./pages/thumb/page-19.jpg",
+      "normal": "./pages/normal/page-19.jpg",
+      "large": "./pages/large/page-19.jpg",
+      "id": "page-3b6463aa-be75-485d-baa8-b5352d9992e3",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 20,
+      "thumb": "./pages/thumb/page-20.jpg",
+      "normal": "./pages/normal/page-20.jpg",
+      "large": "./pages/large/page-20.jpg",
+      "id": "page-bbef4588-0ad6-48e8-87ea-ceb6c20820a4",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 21,
+      "thumb": "./pages/thumb/page-21.jpg",
+      "normal": "./pages/normal/page-21.jpg",
+      "large": "./pages/large/page-21.jpg",
+      "id": "page-2c2149be-f4b6-4388-b750-39344d3cc732",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 22,
+      "thumb": "./pages/thumb/page-22.jpg",
+      "normal": "./pages/normal/page-22.jpg",
+      "large": "./pages/large/page-22.jpg",
+      "id": "page-1a578224-8277-4df4-b996-bd36124f18e1",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 23,
+      "thumb": "./pages/thumb/page-23.jpg",
+      "normal": "./pages/normal/page-23.jpg",
+      "large": "./pages/large/page-23.jpg",
+      "id": "page-25452206-55c5-4c70-a9b4-64f7cdaf9dee",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 24,
+      "thumb": "./pages/thumb/page-24.jpg",
+      "normal": "./pages/normal/page-24.jpg",
+      "large": "./pages/large/page-24.jpg",
+      "id": "page-430efa58-c0dc-4415-a196-4e6f8422a798",
+      "background": "#ffffff",
+      "elements": []
+    }
+  ],
+  "pdfUrl": "./source.pdf",
+  "createdAt": 1789723797216,
+  "updatedAt": 1789723797740,
+  "published": true,
+  "toc": [
+    {
+      "id": "db89f1fb-d71a-4010-a063-6743bcda77ae",
+      "title": "салаты",
+      "pageId": "page-430efa58-c0dc-4415-a196-4e6f8422a798"
+    },
+    {
+      "id": "b8d70dbc-4ec9-48c5-83fc-744a5b20b2e7",
+      "title": "салаты",
+      "pageId": "page-2c2149be-f4b6-4388-b750-39344d3cc732"
+    }
+  ],
+  "settings": {
+    "flipSound": true,
+    "flipDuration": 800,
+    "hardCover": true,
+    "rtl": false,
+    "singlePageMode": "auto",
+    "bgColor": "#2b2b2b",
+    "bgColor2": "#161616",
+    "accent": "#1e40af",
+    "showThumbnails": true,
+    "allowDownload": true,
+    "allowPrint": true,
+    "autoFlipSeconds": 0,
+    "backgroundImage": null,
+    "logoUrl": null,
+    "logoLink": null,
+    "logoWidth": 120
+  },
+  "links": [],
+  "sfx": {
+    "flip": [
+      "/assets/sfx/flip.mp3"
+    ],
+    "hard": null
+  }
+}
