@@ -639,12 +639,18 @@ function finishTurn() {
 	const token = ++glHideToken
 	const started = performance.now()
 	const waitHide = () => {
-		if (token !== glHideTimer || S.animating || S.dragging) return
+		if (token !== glHideToken || S.animating || S.dragging) {
+			clearInterval(iv)
+			return
+		}
 		const loading = [$('#imgLeft'), $('#imgRight')].some((im) => im.getAttribute('src') && (!im.complete || !im.naturalWidth))
-		if (loading && performance.now() - started < 2500) return requestAnimationFrame(waitHide)
-		$('#gl').classList.remove('on')
+		if (!loading || performance.now() - started > 2500) {
+			clearInterval(iv)
+			$('#gl').classList.remove('on')
+		}
 	}
-	requestAnimationFrame(waitHide)
+	waitHide()
+	const iv = setInterval(waitHide, 100)
 }
 
 function setSpread(target) {
@@ -830,14 +836,25 @@ function queueDraw(args) {
 function animateFold(from, to, duration, onFrame) {
 	return new Promise((done) => {
 		const start = performance.now()
-		const step = (now) => {
+		let lastFrame = 0
+		const frame = (now) => {
+			lastFrame = now
 			const t = Math.min(1, (now - start) / duration)
 			const fold = lerpFold(from, to, easePaper(t))
 			if (onFrame) onFrame(fold, t)
-			if (t < 1) requestAnimationFrame(step)
-			else done()
+			if (t < 1) requestAnimationFrame(frame)
+			else {
+				clearInterval(guard)
+				done()
+			}
 		}
-		requestAnimationFrame(step)
+		// страховка: если rAF не тикает (свернули окно во время переворота), двигаем кадры по таймеру
+		const guard = setInterval(() => {
+			const now = performance.now()
+			if (now - lastFrame > 120 && now - start < duration + 400) frame(now)
+		}, 50)
+		setTimeout(() => clearInterval(guard), duration + 1500)
+		requestAnimationFrame(frame)
 	})
 }
 
