@@ -417,6 +417,23 @@ function preloadNearby() {
 	}
 }
 
+// фоновая предзагрузка всей книги: страницы почти всегда уже в кэше к моменту листания
+function preloadAll() {
+	S.mf.pages.forEach((p, i) => setTimeout(() => {
+		if (!S.mf) return
+		loadImg(safeUrl(p.thumb))
+		loadImg(pageUrl(p.index))
+	}, 400 + i * 150))
+}
+
+// текстура для старта анимации: HD из кэша или лёгкое превью — без ожидания сети
+function pageTex(n) {
+	const src = pageUrl(n)
+	if (src && S.imgCache.has(src)) return loadImg(src)
+	const t = safeUrl(S.mf.pages[n - 1]?.thumb)
+	return t ? loadImg(t) : Promise.resolve(null)
+}
+
 function layout() {
 	if (!S.mf) return
 	if (S.animating || S.dragging) {
@@ -862,10 +879,13 @@ async function flip(forward, opts = {}) {
 		return
 	}
 	try {
-		const [fImg, bImg] = await Promise.all([loadImg(pageUrl(frontPage)), loadImg(pageUrl(backPage || frontPage))])
-		const front = GL.texture(fImg)
-		const back = GL.texture(bImg)
+		let [fImg, bImg] = await Promise.all([pageTex(frontPage), pageTex(backPage || frontPage)])
+		let front = GL.texture(fImg)
+		let back = GL.texture(bImg)
 		if (!front || !back) throw new Error('Не удалось подготовить страницы')
+		// HD-версии догоняют в полёте, если анимация началась на превью
+		loadImg(pageUrl(frontPage)).then((img) => { if (img) front = GL.texture(img) })
+		loadImg(pageUrl(backPage || frontPage)).then((img) => { if (img) back = GL.texture(img) })
 		prepareUnderlay(forward, target)
 		canvas.classList.add('on')
 		const duration = opts.fromDrag ? Math.max(180, S.mf.settings.flipDuration * 0.55) : S.mf.settings.flipDuration
@@ -987,7 +1007,7 @@ const Hover = {
 		const frontPage = S.single ? cur.right : dir > 0 ? cur.right : cur.left
 		const backPage = S.single ? nxt.right : dir > 0 ? nxt.left : nxt.right
 		if (!frontPage) return
-		const [fImg, bImg] = await Promise.all([loadImg(pageUrl(frontPage)), loadImg(pageUrl(backPage || frontPage))])
+		const [fImg, bImg] = await Promise.all([pageTex(frontPage), pageTex(backPage || frontPage)])
 		if (!fImg || !bImg || !this.active || this.dir !== dir || S.animating || S.dragging) return
 		this.front = GL.texture(fImg)
 		this.back = GL.texture(bImg)
@@ -1043,7 +1063,7 @@ function initDrag() {
 		const frontPage = S.single ? cur.right : forward ? cur.right : cur.left
 		const backPage = S.single ? nxt.right : forward ? nxt.left : nxt.right
 		if (!frontPage) return
-		const [fImg, bImg] = await Promise.all([loadImg(pageUrl(frontPage)), loadImg(pageUrl(backPage || frontPage))])
+		const [fImg, bImg] = await Promise.all([pageTex(frontPage), pageTex(backPage || frontPage)])
 		if (!fImg || !bImg || startInfo !== info || !S.dragging) return
 		const front = GL.texture(fImg)
 		const back = GL.texture(bImg)
@@ -1406,6 +1426,7 @@ async function init() {
 		initUi()
 		if (initialHash) goToPage(parseInt(initialHash[1], 10))
 		else renderSpread()
+		preloadAll()
 	} catch (err) {
 		console.error(err)
 		const message = document.createElement('p')
