@@ -1,0 +1,232 @@
+{
+  "slug": "01-f25a17bc6eeb",
+  "publicSlug": "01",
+  "url": "./",
+  "title": "01",
+  "pageCount": 21,
+  "page": {
+    "width": 849,
+    "height": 1200
+  },
+  "pages": [
+    {
+      "index": 1,
+      "thumb": "./pages/thumb/page-1.jpg",
+      "normal": "./pages/normal/page-1.jpg",
+      "large": "./pages/large/page-1.jpg",
+      "id": "page-88d8f634-5ced-4c88-835c-6a549db2aa8d",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 2,
+      "thumb": "./pages/thumb/page-2.jpg",
+      "normal": "./pages/normal/page-2.jpg",
+      "large": "./pages/large/page-2.jpg",
+      "id": "page-3aac5058-e4a5-4700-8f53-739f19c05e03",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 3,
+      "thumb": "./pages/thumb/page-3.jpg",
+      "normal": "./pages/normal/page-3.jpg",
+      "large": "./pages/large/page-3.jpg",
+      "id": "page-cb8c0151-39f9-4120-ad5a-86439d997a0d",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 4,
+      "thumb": "./pages/thumb/page-4.jpg",
+      "normal": "./pages/normal/page-4.jpg",
+      "large": "./pages/large/page-4.jpg",
+      "id": "page-e82a7b00-2010-435f-9397-a6b628b137f8",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 5,
+      "thumb": "./pages/thumb/page-5.jpg",
+      "normal": "./pages/normal/page-5.jpg",
+      "large": "./pages/large/page-5.jpg",
+      "id": "page-1b12c4ca-3395-4de8-be4b-dd99b6a3182e",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 6,
+      "thumb": "./pages/thumb/page-6.jpg",
+      "normal": "./pages/normal/page-6.jpg",
+      "large": "./pages/large/page-6.jpg",
+      "id": "page-63794743-b613-41e3-8053-eba5dd37ed0a",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 7,
+      "thumb": "./pages/thumb/page-7.jpg",
+      "normal": "./pages/normal/page-7.jpg",
+      "large": "./pages/large/page-7.jpg",
+      "id": "page-abf57a96-f0e8-4522-bfae-dc8ae6c79090",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 8,
+      "thumb": "./pages/thumb/page-8.jpg",
+      "normal": "./pages/normal/page-8.jpg",
+      "large": "./pages/large/page-8.jpg",
+      "id": "page-a53fcaea-164a-4c72-a6f9-a928b076079b",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 9,
+      "thumb": "./pages/thumb/page-9.jpg",
+      "normal": "./pages/normal/page-9.jpg",
+      "large": "./pages/large/page-9.jpg",
+      "id": "page-51a0e7fd-4f5e-44ce-ae40-8d936eb164aa",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 10,
+      "thumb": "./pages/thumb/page-10.jpg",
+      "normal": "./pages/normal/page-10.jpg",
+      "large": "./pages/large/page-10.jpg",
+      "id": "page-1feb32dd-157f-4293-a905-c8a96dedae8b",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 11,
+      "thumb": "./pages/thumb/page-11.jpg",
+      "normal": "./pages/normal/page-11.jpg",
+      "large": "./pages/large/page-11.jpg",
+      "id": "page-deb67af2-4ca2-43f1-94ee-1adf195e877a",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 12,
+      "thumb": "./pages/thumb/page-12.jpg",
+      "normal": "./pages/normal/page-12.jpg",
+      "large": "./pages/large/page-12.jpg",
+      "id": "page-bc1ce99a-465c-4aad-a0d0-98de221faa3d",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 13,
+      "thumb": "./pages/thumb/page-13.jpg",
+      "normal": "./pages/normal/page-13.jpg",
+      "large": "./pages/large/page-13.jpg",
+      "id": "page-8108e0e7-404a-47e7-be2f-d41fff8ffafe",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 14,
+      "thumb": "./pages/thumb/page-14.jpg",
+      "normal": "./pages/normal/page-14.jpg",
+      "large": "./pages/large/page-14.jpg",
+      "id": "page-343aa6a8-c95b-47f9-aee0-5aab11c799d3",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 15,
+      "thumb": "./pages/thumb/page-15.jpg",
+      "normal": "./pages/normal/page-15.jpg",
+      "large": "./pages/large/page-15.jpg",
+      "id": "page-78039dc7-486c-4e46-a1c0-28ab6ee13b17",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 16,
+      "thumb": "./pages/thumb/page-16.jpg",
+      "normal": "./pages/normal/page-16.jpg",
+      "large": "./pages/large/page-16.jpg",
+      "id": "page-719450af-11e5-4388-98b1-3ec10aff89f0",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 17,
+      "thumb": "./pages/thumb/page-17.jpg",
+      "normal": "./pages/normal/page-17.jpg",
+      "large": "./pages/large/page-17.jpg",
+      "id": "page-89c26c82-baa7-4033-a2ed-752f768ac8cd",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 18,
+      "thumb": "./pages/thumb/page-18.jpg",
+      "normal": "./pages/normal/page-18.jpg",
+      "large": "./pages/large/page-18.jpg",
+      "id": "page-0cbf8ee5-ca02-43b7-a057-3d072e4fc22c",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 19,
+      "thumb": "./pages/thumb/page-19.jpg",
+      "normal": "./pages/normal/page-19.jpg",
+      "large": "./pages/large/page-19.jpg",
+      "id": "page-11b4c32b-6223-4d56-8539-28ea9e5bd687",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 20,
+      "thumb": "./pages/thumb/page-20.jpg",
+      "normal": "./pages/normal/page-20.jpg",
+      "large": "./pages/large/page-20.jpg",
+      "id": "page-9864bcfa-6be3-4f81-8955-90fb3ce4adbf",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 21,
+      "thumb": "./pages/thumb/page-21.jpg",
+      "normal": "./pages/normal/page-21.jpg",
+      "large": "./pages/large/page-21.jpg",
+      "id": "page-5f715427-eb17-4599-9779-a276343e7f79",
+      "background": "#ffffff",
+      "elements": []
+    }
+  ],
+  "pdfUrl": null,
+  "createdAt": 1790621811439,
+  "updatedAt": 1790621811721,
+  "published": true,
+  "toc": [],
+  "settings": {
+    "flipSound": true,
+    "flipDuration": 800,
+    "hardCover": true,
+    "rtl": false,
+    "singlePageMode": "auto",
+    "bgColor": "#2b2b2b",
+    "bgColor2": "#161616",
+    "accent": "#1e40af",
+    "showThumbnails": true,
+    "allowDownload": true,
+    "allowPrint": true,
+    "autoFlipSeconds": 0,
+    "backgroundImage": null,
+    "logoUrl": null,
+    "logoLink": null,
+    "logoWidth": 120
+  },
+  "links": [],
+  "sfx": {
+    "flip": [
+      "/assets/sfx/flip.mp3"
+    ],
+    "hard": null
+  }
+}
