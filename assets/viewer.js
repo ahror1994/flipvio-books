@@ -396,16 +396,23 @@ function loadImg(src) {
 		const img = new Image()
 		img.crossOrigin = 'anonymous'
 		img.decoding = 'async'
-		img.onload = () => {
+		let settled = false
+		const finish = (loaded) => {
+			if (settled) return
+			settled = true
+			clearTimeout(timeout)
+			img.onload = null
+			img.onerror = null
 			S.pendingImg.delete(src)
-			S.imgCache.set(src, img)
-			trimCache(S.imgCache, 16)
-			resolve(img)
+			if (loaded) {
+				S.imgCache.set(src, img)
+				trimCache(S.imgCache, 16)
+			}
+			resolve(loaded ? img : null)
 		}
-		img.onerror = () => {
-			S.pendingImg.delete(src)
-			resolve(null)
-		}
+		const timeout = setTimeout(() => finish(false), 4000)
+		img.onload = () => finish(true)
+		img.onerror = () => finish(false)
 		img.src = src
 	})
 	S.pendingImg.set(src, p)
@@ -651,8 +658,8 @@ function finishTurn() {
 			$('#gl').classList.remove('on')
 		}
 	}
-	waitHide()
 	const iv = setInterval(waitHide, 100)
+	waitHide()
 }
 
 function setSpread(target) {
@@ -836,27 +843,38 @@ function queueDraw(args) {
 }
 
 function animateFold(from, to, duration, onFrame) {
-	return new Promise((done) => {
+	return new Promise((resolve, reject) => {
 		const start = performance.now()
-		let lastFrame = 0
-		const frame = (now) => {
-			lastFrame = now
-			const t = Math.min(1, (now - start) / duration)
-			const fold = lerpFold(from, to, easePaper(t))
-			if (onFrame) onFrame(fold, t)
-			if (t < 1) requestAnimationFrame(frame)
-			else {
-				clearInterval(guard)
-				done()
-			}
+		let lastFrame = start
+		let raf = null
+		let finished = false
+		const finish = (error) => {
+			if (finished) return
+			finished = true
+			if (raf !== null) cancelAnimationFrame(raf)
+			clearInterval(guard)
+			if (error) reject(error)
+			else resolve()
 		}
-		// страховка: если rAF не тикает (свернули окно во время переворота), двигаем кадры по таймеру
+		const frame = (now) => {
+			if (finished) return
+			if (raf !== null) cancelAnimationFrame(raf)
+			raf = null
+			lastFrame = now
+			try {
+				const t = clamp((now - start) / Math.max(1, duration), 0, 1)
+				const fold = lerpFold(from, to, easePaper(t))
+				if (onFrame) onFrame(fold, t)
+				if (t >= 1) finish()
+				else raf = requestAnimationFrame(frame)
+			} catch (error) { finish(error) }
+		}
+		// Timers settle the turn after backgrounding or stalled animation frames.
 		const guard = setInterval(() => {
 			const now = performance.now()
-			if (now - lastFrame > 120 && now - start < duration + 400) frame(now)
+			if (now - lastFrame > 120) frame(now)
 		}, 50)
-		setTimeout(() => clearInterval(guard), duration + 1500)
-		requestAnimationFrame(frame)
+		raf = requestAnimationFrame(frame)
 	})
 }
 
@@ -1112,6 +1130,7 @@ const Pinch = {
 				this.startScale = this.scale
 				this.startCenter = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }
 				this.basePan = { ...this.pan }
+				stage.dispatchEvent(new Event('flipvio-cancel-drag'))
 				Hover.cancel()
 			}
 		})
@@ -1196,17 +1215,23 @@ function initDrag() {
 			last: { x: startInfo.grab.x, y: startInfo.grab.y },
 			moved: true,
 		}
+		if (lastEvent) {
+			drag.last = pagePoint(lastEvent, drag.rect, drag.forward)
+			drag.fold = foldFromDrag(drag.grab, drag.last)
+			if (drag.fold) drawFold(drag.fold, drag.front, drag.back, drag.forward ? 1 : -1)
+		}
 	}
 
 	const onMove = (e) => {
 		lastEvent = e
-		if (S.pinch) return
+		if (S.pinch || Pinch.active) return
 		if (startInfo && e.pointerId !== startInfo.pointerId) return
 		if (!drag) {
 			if (!startInfo) return
 			const dx = e.clientX - startInfo.clientX
 			const dy = e.clientY - startInfo.clientY
 			if (Math.hypot(dx, dy) > 7) {
+				startInfo.moved = true
 				if (S.single) {
 					// листаем только явным горизонтальным жестом — иначе это скролл/зум
 					if (Math.abs(dx) < Math.abs(dy) * 1.25) return
@@ -1215,10 +1240,12 @@ function initDrag() {
 					// захват всегда у свободного края страницы — сгиб получается ровным
 					startInfo.grab = { x: S.sizes.w, y: pagePoint(e, startInfo.rect, startInfo.forward).y }
 				}
+				const target = S.spread + (startInfo.forward ? 1 : -1)
+				if (target < 0 || target > maxSpread()) return
+				startInfo.gestureAccepted = true
 				S.dragging = true
 				Hover.cancel()
-				Sfx.play()
-				beginDrag()
+				beginDrag().catch(() => {})
 			}
 			return
 		}
@@ -1235,6 +1262,7 @@ function initDrag() {
 		const from = d.fold || restFold()
 		const to = complete ? finalFold() : restFold()
 		const duration = complete ? Math.max(180, S.mf.settings.flipDuration * 0.55) : 220
+		if (complete) Sfx.play()
 		try {
 			await animateFold(from, to, duration, (fold) => drawFold(fold, d.front, d.back, d.forward ? 1 : -1))
 			if (complete) setSpread(d.target)
@@ -1261,8 +1289,13 @@ function initDrag() {
 		}
 		if (!d || !d.moved) {
 			if (si && e.type !== 'pointercancel' && !S.animating) {
-				if (si.forward) flip(true)
-				else if (si.backward) flip(false)
+				const distance = Math.abs((e.clientX ?? si.clientX) - si.clientX)
+				const quickSwipe = distance > 35 && performance.now() - si.startedAt < 350
+				const fullSwipe = distance > si.rect.width * 0.22
+				if (!si.moved || (si.gestureAccepted && (quickSwipe || fullSwipe))) {
+					if (si.forward) flip(true)
+					else if (si.backward) flip(false)
+				}
 			}
 			return
 		}
@@ -1272,6 +1305,9 @@ function initDrag() {
 		await settle(d, complete)
 	}
 
+	$('#stage').addEventListener('flipvio-cancel-drag', () => {
+		if (startInfo) onUp({ type: 'pointercancel', pointerId: startInfo.pointerId })
+	})
 	book.addEventListener('pointermove', (e) => {
 		if (!startInfo && !S.dragging && !S.animating) Hover.check(e, book)
 	})
@@ -1290,6 +1326,7 @@ function initDrag() {
 		startInfo = {
 			clientX: e.clientX,
 			clientY: e.clientY,
+			startedAt: performance.now(),
 			pointerId: e.pointerId,
 			grab: pagePoint(e, r, forward),
 			forward,
