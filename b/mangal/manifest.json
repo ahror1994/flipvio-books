@@ -1,0 +1,295 @@
+{
+  "slug": "mangal",
+  "publicSlug": "mangal",
+  "url": "./",
+  "title": "Мангал",
+  "pageCount": 28,
+  "page": {
+    "width": 849,
+    "height": 1200
+  },
+  "pages": [
+    {
+      "index": 1,
+      "thumb": "./pages/thumb/page-1.jpg",
+      "normal": "./pages/normal/page-1.jpg",
+      "large": "./pages/large/page-1.jpg",
+      "id": "page-1",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 2,
+      "thumb": "./pages/thumb/page-2.jpg",
+      "normal": "./pages/normal/page-2.jpg",
+      "large": "./pages/large/page-2.jpg",
+      "id": "page-2",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 3,
+      "thumb": "./pages/thumb/page-3.jpg",
+      "normal": "./pages/normal/page-3.jpg",
+      "large": "./pages/large/page-3.jpg",
+      "id": "page-3",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 4,
+      "thumb": "./pages/thumb/page-4.jpg",
+      "normal": "./pages/normal/page-4.jpg",
+      "large": "./pages/large/page-4.jpg",
+      "id": "page-4",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 5,
+      "thumb": "./pages/thumb/page-5.jpg",
+      "normal": "./pages/normal/page-5.jpg",
+      "large": "./pages/large/page-5.jpg",
+      "id": "page-5",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 6,
+      "thumb": "./pages/thumb/page-6.jpg",
+      "normal": "./pages/normal/page-6.jpg",
+      "large": "./pages/large/page-6.jpg",
+      "id": "page-6",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 7,
+      "thumb": "./pages/thumb/page-7.jpg",
+      "normal": "./pages/normal/page-7.jpg",
+      "large": "./pages/large/page-7.jpg",
+      "id": "page-7",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 8,
+      "thumb": "./pages/thumb/page-8.jpg",
+      "normal": "./pages/normal/page-8.jpg",
+      "large": "./pages/large/page-8.jpg",
+      "id": "page-8",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 9,
+      "thumb": "./pages/thumb/page-9.jpg",
+      "normal": "./pages/normal/page-9.jpg",
+      "large": "./pages/large/page-9.jpg",
+      "id": "page-9",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 10,
+      "thumb": "./pages/thumb/page-10.jpg",
+      "normal": "./pages/normal/page-10.jpg",
+      "large": "./pages/large/page-10.jpg",
+      "id": "page-10",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 11,
+      "thumb": "./pages/thumb/page-11.jpg",
+      "normal": "./pages/normal/page-11.jpg",
+      "large": "./pages/large/page-11.jpg",
+      "id": "page-11",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 12,
+      "thumb": "./pages/thumb/page-12.jpg",
+      "normal": "./pages/normal/page-12.jpg",
+      "large": "./pages/large/page-12.jpg",
+      "id": "page-12",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 13,
+      "thumb": "./pages/thumb/page-13.jpg",
+      "normal": "./pages/normal/page-13.jpg",
+      "large": "./pages/large/page-13.jpg",
+      "id": "page-13",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 14,
+      "thumb": "./pages/thumb/page-14.jpg",
+      "normal": "./pages/normal/page-14.jpg",
+      "large": "./pages/large/page-14.jpg",
+      "id": "page-14",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 15,
+      "thumb": "./pages/thumb/page-15.jpg",
+      "normal": "./pages/normal/page-15.jpg",
+      "large": "./pages/large/page-15.jpg",
+      "id": "page-15",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 16,
+      "thumb": "./pages/thumb/page-16.jpg",
+      "normal": "./pages/normal/page-16.jpg",
+      "large": "./pages/large/page-16.jpg",
+      "id": "page-16",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 17,
+      "thumb": "./pages/thumb/page-17.jpg",
+      "normal": "./pages/normal/page-17.jpg",
+      "large": "./pages/large/page-17.jpg",
+      "id": "page-17",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 18,
+      "thumb": "./pages/thumb/page-18.jpg",
+      "normal": "./pages/normal/page-18.jpg",
+      "large": "./pages/large/page-18.jpg",
+      "id": "page-18",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 19,
+      "thumb": "./pages/thumb/page-19.jpg",
+      "normal": "./pages/normal/page-19.jpg",
+      "large": "./pages/large/page-19.jpg",
+      "id": "page-19",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 20,
+      "thumb": "./pages/thumb/page-20.jpg",
+      "normal": "./pages/normal/page-20.jpg",
+      "large": "./pages/large/page-20.jpg",
+      "id": "page-20",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 21,
+      "thumb": "./pages/thumb/page-21.jpg",
+      "normal": "./pages/normal/page-21.jpg",
+      "large": "./pages/large/page-21.jpg",
+      "id": "page-21",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 22,
+      "thumb": "./pages/thumb/page-22.jpg",
+      "normal": "./pages/normal/page-22.jpg",
+      "large": "./pages/large/page-22.jpg",
+      "id": "page-22",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 23,
+      "thumb": "./pages/thumb/page-23.jpg",
+      "normal": "./pages/normal/page-23.jpg",
+      "large": "./pages/large/page-23.jpg",
+      "id": "page-23",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 24,
+      "thumb": "./pages/thumb/page-24.jpg",
+      "normal": "./pages/normal/page-24.jpg",
+      "large": "./pages/large/page-24.jpg",
+      "id": "page-24",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 25,
+      "thumb": "./pages/thumb/page-25.jpg",
+      "normal": "./pages/normal/page-25.jpg",
+      "large": "./pages/large/page-25.jpg",
+      "id": "page-25",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 26,
+      "thumb": "./pages/thumb/page-26.jpg",
+      "normal": "./pages/normal/page-26.jpg",
+      "large": "./pages/large/page-26.jpg",
+      "id": "page-26",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 27,
+      "thumb": "./pages/thumb/page-27.jpg",
+      "normal": "./pages/normal/page-27.jpg",
+      "large": "./pages/large/page-27.jpg",
+      "id": "page-27",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 28,
+      "thumb": "./pages/thumb/page-28.jpg",
+      "normal": "./pages/normal/page-28.jpg",
+      "large": "./pages/large/page-28.jpg",
+      "id": "page-28",
+      "background": "#ffffff",
+      "elements": []
+    }
+  ],
+  "pdfUrl": null,
+  "createdAt": 1794574720203,
+  "updatedAt": 1794574720203,
+  "published": true,
+  "toc": [],
+  "settings": {
+    "flipSound": true,
+    "flipDuration": 800,
+    "hardCover": true,
+    "rtl": false,
+    "singlePageMode": "auto",
+    "bgColor": "#2b2b2b",
+    "bgColor2": "#161616",
+    "accent": "#1e40af",
+    "showThumbnails": true,
+    "allowDownload": true,
+    "allowPrint": true,
+    "autoFlipSeconds": 0,
+    "backgroundImage": null,
+    "logoUrl": null,
+    "logoLink": null,
+    "logoWidth": 120
+  },
+  "links": [],
+  "sfx": {
+    "flip": [
+      "/assets/sfx/flip.mp3"
+    ],
+    "hard": null
+  }
+}
