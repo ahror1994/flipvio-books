@@ -117,13 +117,8 @@ void main() {
 		nLocal = vec3(-N * sn, cs);
 	} else {
 		float extra = s - PI * R;
-		float drapeScale = max(90.0, W * 1.2);
-		float decay = exp(-extra / drapeScale);
-		float zFlap = 2.0 * R * (0.18 + 0.82 * decay);
-		float dzds = -2.0 * R * 0.82 * decay / drapeScale;
-		float xyScale = sqrt(max(0.92, 1.0 - dzds * dzds));
-		pLocal = vec3(F + A * t - N * (extra * xyScale), zFlap);
-		nLocal = normalize(vec3(-N * dzds, -1.0));
+		pLocal = vec3(F + A * t - N * extra, 2.0 * R);
+		nLocal = vec3(0.0, 0.0, -1.0);
 	}
 	if (uDir < 0.0) {
 		pLocal.x = -pLocal.x;
@@ -134,8 +129,8 @@ void main() {
 	vZ = pLocal.z;
 	vS = s;
 	float zLift = pLocal.z * smoothstep(0.55, 2.5, R);
-	float camZ = max(950.0, W * 3.2);
-	float persp = camZ / max(220.0, camZ - zLift);
+	float camZ = max(1600.0, W * 4.5);
+	float persp = camZ / max(260.0, camZ - zLift);
 	vec2 proj = pLocal.xy * persp;
 	vec2 clip = vec2(proj.x / (uViewport.x * 0.5), -proj.y / (uViewport.y * 0.5));
 	gl_Position = vec4(clip, clamp(0.5 - vZ / 1200.0, 0.0, 1.0), 1.0);
@@ -163,21 +158,17 @@ void main() {
 	vec3 L1 = normalize(vec3(-0.32, -0.42, 1.28));
 	vec3 L2 = normalize(vec3(0.45, 0.25, 0.95));
 	float diff = 0.78 * max(0.0, dot(N, L1)) + 0.22 * max(0.0, dot(N, L2));
-	float light = mix(mix(0.58, 1.04, diff), 1.0, pow(flatness, 1.5));
+	float light = mix(mix(0.68, 1.03, diff), 1.0, pow(flatness, 1.4));
 
 	vec3 V = vec3(0.0, 0.0, 1.0);
 	vec3 H1 = normalize(L1 + V);
 	float spec = pow(max(0.0, dot(N, H1)), 26.0) * 0.10 * (1.0 - flatness);
 	float R = max(0.35, uRadius);
-	float crest = 0.46 * PI * R;
-	float inCurl = step(0.0, vS) * step(vS, PI * R);
-	float glossDist = (vS - crest) / max(1.0, 0.34 * PI * R);
-	float gloss = exp(-glossDist * glossDist) * inCurl * 0.20 * (1.0 - flatness) * smoothstep(2.0, 14.0, R);
+	float crest = 0.45 * PI * R;
+	float smoothBowl = smoothstep(0.0, 0.2 * PI * R, vS) * (1.0 - smoothstep(0.75 * PI * R, PI * R, vS));
+	float glossDist = (vS - crest) / max(1.0, 0.30 * PI * R);
+	float gloss = exp(-glossDist * glossDist) * smoothBowl * 0.18 * (1.0 - flatness) * smoothstep(2.0, 14.0, R);
 
-	float curlCrease = smoothstep(0.35 * PI, 0.85 * PI, vS / R) * inCurl;
-	float curlAO = 1.0 - 0.22 * curlCrease * smoothstep(2.0, 16.0, R);
-
-	float depthShadow = clamp(1.0 - (vZ / 260.0) * 0.12, 0.76, 1.0);
 	float gutterW = clamp(30.0 / max(1.0, uPage.x), 0.03, 0.12);
 	float gutterT = 1.0 - clamp(vUv.x / gutterW, 0.0, 1.0);
 	float gutterShade = mix(1.0, 1.0 - 0.34 * gutterT * gutterT, (1.0 - uSingle) * (1.0 - clamp(vZ / 45.0, 0.0, 1.0)));
@@ -189,7 +180,7 @@ void main() {
 		uv = isFront ? vec2(1.0 - vUv.x, vUv.y) : vUv;
 	}
 	vec4 base = isFront ? texture(uFront, uv) : texture(uBack, uv);
-	vec3 col = base.rgb * light * depthShadow * curlAO * gutterShade + spec + gloss;
+	vec3 col = base.rgb * light * gutterShade + spec + gloss;
 
 	float px = 1.35 / max(1.0, uPage.x);
 	float py = 1.35 / max(1.0, uPage.y);
@@ -243,17 +234,13 @@ void main() {
 	float sShift = dot(shifted - uFoldPoint, N);
 	float tShift = dot(shifted - uFoldPoint, A);
 	float s0 = PI * R - sShift;
-	float flapShadow = 0.0;
-	if (s0 >= 0.72 * PI * R) {
-		vec2 P0 = uFoldPoint + A * tShift + N * s0;
-		vec2 halfP = uPage * 0.5;
-		vec2 q = abs(P0 - vec2(halfP.x, 0.0)) - halfP;
-		float dRect = length(max(q, 0.0)) + min(max(q.x, q.y), 0.0);
-		float extra = max(0.0, s0 - PI * R);
-		float hEst = 2.0 * R * (0.18 + 0.82 * exp(-extra / max(90.0, uPage.x * 1.2)));
-		float penumbra = clamp(hEst * 0.45, 5.0, 44.0);
-		flapShadow = 0.32 * (1.0 - smoothstep(-penumbra * 0.3, penumbra, dRect));
-	}
+	vec2 P0 = uFoldPoint + A * tShift + N * s0;
+	vec2 halfP = uPage * 0.5;
+	vec2 q = abs(P0 - vec2(halfP.x, 0.0)) - halfP;
+	float dRect = length(max(q, 0.0)) + min(max(q.x, q.y), 0.0);
+	float penumbra = clamp(R * 0.76, 6.0, 38.0);
+	float flapMask = smoothstep(0.55 * PI * R, 0.95 * PI * R, s0);
+	float flapShadow = flapMask * 0.30 * (1.0 - smoothstep(-penumbra * 0.3, penumbra, dRect));
 
 	float a = max(cylShadow, flapShadow) * fade;
 	if (a < 0.008) discard;
@@ -378,8 +365,7 @@ const GL = {
 		const t = gl.createTexture()
 		gl.bindTexture(gl.TEXTURE_2D, t)
 		gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img)
-		gl.generateMipmap(gl.TEXTURE_2D)
-		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR)
+		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR)
 		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR)
 		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
 		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
@@ -948,12 +934,10 @@ function foldFromDrag(grab, finger, opts = {}) {
 	const gy = clamp(grab.y, -H * 0.49, H * 0.49)
 	const rawDx = finger.x - gx
 	const rawDy = finger.y - gy
-	const pull = Math.hypot(rawDx, rawDy)
-	if (pull < 2.5) return null
+	const inward = -rawDx
+	if (inward < 1.5) return null
 
-	const rawInward = -rawDx
-	const completion = clamp(rawInward / (2 * W), 0, 1)
-	const inward = rawInward > 2 ? rawInward : Math.min(18, pull * 0.6)
+	const completion = clamp(inward / (2 * W), 0, 1)
 
 	let effDy = rawDy
 	if (!opts.pureCorner) {
@@ -961,6 +945,8 @@ function foldFromDrag(grab, finger, opts = {}) {
 		const biasSign = Math.abs(gy) > H * 0.08 ? -Math.sign(gy) : -1
 		effDy += biasSign * Math.min(inward * 0.34, H * 0.16) * horizWeight * (1 - smoothstep(0.25, 0.85, completion))
 	}
+	const maxDy = Math.max(inward * 0.72, 12)
+	effDy = clamp(effDy, -maxDy, maxDy)
 
 	const align = smoothstep(0.62, 0.98, completion)
 	let nx = inward
@@ -979,16 +965,22 @@ function foldFromDrag(grab, finger, opts = {}) {
 	const startR = clamp(W * (opts.isCover ? 0.12 : 0.085), 24, 58)
 	const relax = smoothstep(0.68, 1, completion)
 	const archR = (startR + (maxR - startR) * arch) * (1 - 0.94 * relax) + MIN_RADIUS * relax
-	const lift = smoothstep(2.5, 48, pull)
+	const lift = smoothstep(1.5, 28, inward)
 	const radius = clamp(MIN_RADIUS + (archR - MIN_RADIUS) * lift, MIN_RADIUS, MAX_RADIUS)
 
 	const dTarget = 0.5 * inward + 0.5 * Math.PI * radius * smoothstep(0, 90, inward)
 	const minPointX = -0.5 * Math.PI * MIN_RADIUS * smoothstep(0.95, 1, completion)
-	const point = {
-		x: Math.max(minPointX, gx - dTarget * normal.x),
-		y: clamp(gy - dTarget * normal.y, -H * 0.49, H * 0.49),
+	const rawFold = {
+		point: {
+			x: Math.max(minPointX, gx - dTarget * normal.x),
+			y: clamp(gy - dTarget * normal.y, -H * 0.49, H * 0.49),
+		},
+		dir,
+		normal,
+		radius,
+		completion,
 	}
-	return { point, dir, normal, radius, completion }
+	return constrainFold(rawFold, { w: W, h: H })
 }
 
 function restFold() {
@@ -1254,7 +1246,9 @@ const Hover = {
 	currentFold: null,
 	targetSpread: 0,
 	lastCheck: 0,
+	prepToken: 0,
 	freeze() {
+		this.prepToken++
 		if (this.animId) {
 			cancelAnimationFrame(this.animId)
 			this.animId = null
@@ -1268,6 +1262,8 @@ const Hover = {
 		this.corner = null
 		this.grab = null
 		this.offset = null
+		this.front = null
+		this.back = null
 		this.currentFold = null
 		const canvas = $('#gl')
 		if (canvas && !S.animating && !S.dragging) {
@@ -1277,12 +1273,14 @@ const Hover = {
 		}
 	},
 	cornerAt(mx, my, W, H) {
-		const size = Math.min(130, Math.min(W * 0.24, H * 0.26))
+		const enterSize = Math.min(96, Math.min(W * 0.17, H * 0.18))
+		const exitSize = enterSize * 1.25
 		let best = null
 		let bestDist = Infinity
 		const add = (corner, dir, grabY, d) => {
-			if (d >= size || d >= bestDist) return
-			best = { corner, dir, grabY, dist: d, size }
+			const limit = this.active && this.corner === corner ? exitSize : enterSize
+			if (d >= limit || d >= bestDist) return
+			best = { corner, dir, grabY, dist: d, size: limit }
 			bestDist = d
 		}
 		if (S.spread < maxSpread()) {
@@ -1306,14 +1304,19 @@ const Hover = {
 		const hit = this.cornerAt(mx, my, r.width, r.height)
 		if (hit) {
 			book.style.cursor = 'grab'
-			this.target = clamp((1 - hit.dist / hit.size) * 34, 6, 34)
+			const nextTarget = clamp((1 - hit.dist / hit.size) * 40, 10, 40)
 			if (!this.active || this.corner !== hit.corner) {
+				if (this.active && this.corner !== hit.corner) this.cancel()
 				this.corner = hit.corner
 				this.dir = hit.dir
+				this.target = nextTarget
 				this.grab = { x: S.sizes.w, y: hit.grabY }
 				this.offset = { x: -1, y: hit.corner[0] === 'b' ? -1 : 1 }
 				this.active = true
 				await this.prepare(hit.dir)
+				if (!this.active || this.corner !== hit.corner) return
+			} else {
+				this.target = nextTarget
 			}
 			this.startAnim()
 		} else if (this.active) {
@@ -1325,6 +1328,7 @@ const Hover = {
 		}
 	},
 	async prepare(dir) {
+		const token = ++this.prepToken
 		const cur = spreadPages(S.spread)
 		const target = S.spread + (dir > 0 ? 1 : -1)
 		const nxt = spreadPages(target)
@@ -1332,28 +1336,51 @@ const Hover = {
 		const backPage = S.single ? nxt.right : dir > 0 ? nxt.left : nxt.right
 		if (!frontPage) return
 		const [fImg, bImg] = await Promise.all([pageTex(frontPage), pageTex(backPage || frontPage)])
-		if (!fImg || !bImg || !this.active || this.dir !== dir || S.animating || S.dragging) return
+		if (token !== this.prepToken || !fImg || !bImg || !this.active || this.dir !== dir || S.animating || S.dragging) return
 		this.targetSpread = target
 		this.front = GL.texture(fImg)
 		this.back = GL.texture(bImg)
-		loadImg(pageUrl(frontPage)).then((img) => { if (img && this.active && this.dir === dir) this.front = GL.texture(img) })
-		loadImg(pageUrl(backPage || frontPage)).then((img) => { if (img && this.active && this.dir === dir) this.back = GL.texture(img) })
+		if (!this.front || !this.back) return
+		const initDist = Math.max(5, this.target * 0.35)
+		this.progress = initDist
+		const initFold = foldFromDrag(
+			this.grab,
+			{ x: this.grab.x + this.offset.x * initDist, y: this.grab.y + this.offset.y * initDist * 0.85 },
+			{ pureCorner: true, isCover: isCoverTurn(S.spread, target) }
+		)
+		if (initFold) {
+			this.currentFold = initFold
+			const page = { w: S.sizes.w, h: S.sizes.h }
+			pendingDraw = null
+			GL.draw({
+				front: this.front,
+				back: this.back,
+				fold: constrainFold(initFold, page),
+				dir: this.dir,
+				page,
+				viewport: viewportSize(),
+				shadowX: shadowBounds(this.dir > 0, target),
+			})
+		}
 		prepareUnderlay(dir > 0, target)
 		$('#gl').classList.add('on')
+		loadImg(pageUrl(frontPage)).then((img) => { if (img && token === this.prepToken && this.active && this.dir === dir) this.front = GL.texture(img) })
+		loadImg(pageUrl(backPage || frontPage)).then((img) => { if (img && token === this.prepToken && this.active && this.dir === dir) this.back = GL.texture(img) })
 	},
 	startAnim() {
 		if (this.animId) return
 		const step = () => {
 			this.progress += (this.target - this.progress) * 0.22
-			if (this.target === 0 && this.progress < 0.3) this.progress = 0
+			if (this.target === 0 && this.progress < 2.0) this.progress = 0
 			const dist = this.progress
 			let fold = null
-			if (dist > 0.5 && this.grab && this.offset) {
-				fold = smoothFold(
+			if (dist > 1.5 && this.grab && this.offset) {
+				const raw = smoothFold(
 					this.currentFold,
 					foldFromDrag(this.grab, { x: this.grab.x + this.offset.x * dist, y: this.grab.y + this.offset.y * dist * 0.85 }, { pureCorner: true, isCover: isCoverTurn(S.spread, this.targetSpread) }),
 					0.32
 				)
+				if (raw) fold = constrainFold(raw, S.sizes)
 			}
 			this.currentFold = fold
 			if (fold && this.front && this.back && !S.dragging && !S.animating) drawFold(fold, this.front, this.back, this.dir, shadowBounds(this.dir > 0, this.targetSpread))
@@ -1362,6 +1389,10 @@ const Hover = {
 			} else {
 				this.animId = null
 				this.active = false
+				this.corner = null
+				this.front = null
+				this.back = null
+				this.currentFold = null
 				if (!S.dragging && !S.animating) {
 					$('#gl').classList.remove('on')
 					renderSpread()
@@ -1595,7 +1626,7 @@ function initDrag() {
 		const turnDx = (e.clientX - info.clientX) * (info.forward ? 1 : -1)
 		const turnDy = e.clientY - info.clientY
 		return {
-			x: info.grab.x + turnDx * gain,
+			x: Math.min(info.grab.x - 2, info.grab.x + turnDx * gain),
 			y: info.grab.y + turnDy,
 		}
 	}
@@ -1670,8 +1701,9 @@ function initDrag() {
 		if (lastEvent) {
 			drag.last = dragFinger(lastEvent, drag)
 			const nextFold = foldFromDrag(drag.grab, drag.last, { isCover: drag.isCover })
-			drag.fold = drag.fold ? smoothFold(drag.fold, nextFold, 0.55) : nextFold
-			if (drag.fold) {
+			const merged = drag.fold ? smoothFold(drag.fold, nextFold, 0.55) : nextFold
+			if (merged) {
+				drag.fold = constrainFold(merged, S.sizes)
 				updateCoverGlide(drag.target, drag.fold.completion)
 				drawFold(drag.fold, drag.front, drag.back, drag.forward ? 1 : -1, drag.sBounds)
 			}
@@ -1691,11 +1723,14 @@ function initDrag() {
 				startInfo.moved = true
 				if (S.single) {
 					// листаем только явным горизонтальным жестом — иначе это скролл/зум
-					if (Math.abs(dx) < Math.abs(dy) * 1.25) return
+					if (Math.abs(dx) < Math.abs(dy) * 1.2) return
 					startInfo.forward = e.clientX < startInfo.clientX
 					startInfo.backward = !startInfo.forward
 					startInfo.touchStart = pagePoint({ clientX: startInfo.clientX, clientY: startInfo.clientY }, startInfo.rect, startInfo.forward)
 					startInfo.grab = { x: S.sizes.w, y: clamp(startInfo.touchStart.y, -S.sizes.h * 0.47, S.sizes.h * 0.47) }
+				} else {
+					const turnDx = dx * (startInfo.forward ? 1 : -1)
+					if (turnDx > -5 || Math.abs(dx) < Math.abs(dy) * 0.6) return
 				}
 				const target = S.spread + (startInfo.forward ? 1 : -1)
 				if (target < 0 || target > maxSpread()) {
@@ -1719,7 +1754,7 @@ function initDrag() {
 		const finger = dragFinger(e, drag)
 		drag.last = finger
 		const fold = smoothFold(drag.fold, foldFromDrag(drag.grab, finger, { isCover: drag.isCover }), 0.45)
-		if (fold) drag.fold = fold
+		if (fold) drag.fold = constrainFold(fold, S.sizes)
 		if (drag.fold) {
 			updateCoverGlide(drag.target, drag.fold.completion)
 			drawFold(drag.fold, drag.front, drag.back, drag.forward ? 1 : -1, drag.sBounds)
