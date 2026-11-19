@@ -1,0 +1,259 @@
+{
+  "slug": "kosmos",
+  "publicSlug": "kosmos",
+  "url": "./",
+  "title": "Космос",
+  "pageCount": 24,
+  "page": {
+    "width": 1697,
+    "height": 2400
+  },
+  "pages": [
+    {
+      "index": 1,
+      "thumb": "./pages/thumb/page-1.jpg",
+      "normal": "./pages/normal/page-1.jpg",
+      "large": "./pages/large/page-1.jpg",
+      "id": "page-caa72948-829a-4fd9-9280-d87bbf56de8a",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 2,
+      "thumb": "./pages/thumb/page-2.jpg",
+      "normal": "./pages/normal/page-2.jpg",
+      "large": "./pages/large/page-2.jpg",
+      "id": "page-38033c92-69de-46db-9047-fa3e8e7e3080",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 3,
+      "thumb": "./pages/thumb/page-3.jpg",
+      "normal": "./pages/normal/page-3.jpg",
+      "large": "./pages/large/page-3.jpg",
+      "id": "page-39224baa-63f7-45a5-b175-00668f93a016",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 4,
+      "thumb": "./pages/thumb/page-4.jpg",
+      "normal": "./pages/normal/page-4.jpg",
+      "large": "./pages/large/page-4.jpg",
+      "id": "page-ccd54268-3399-476a-9203-a4fe10adad63",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 5,
+      "thumb": "./pages/thumb/page-5.jpg",
+      "normal": "./pages/normal/page-5.jpg",
+      "large": "./pages/large/page-5.jpg",
+      "id": "page-2b5498b4-d0f6-4cdc-bff0-cf5966832523",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 6,
+      "thumb": "./pages/thumb/page-6.jpg",
+      "normal": "./pages/normal/page-6.jpg",
+      "large": "./pages/large/page-6.jpg",
+      "id": "page-83b266b9-9673-4ed1-86f4-6985b9961d92",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 7,
+      "thumb": "./pages/thumb/page-7.jpg",
+      "normal": "./pages/normal/page-7.jpg",
+      "large": "./pages/large/page-7.jpg",
+      "id": "page-b2694dd7-2a9b-46f3-b3d8-1b7cd75664ee",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 8,
+      "thumb": "./pages/thumb/page-8.jpg",
+      "normal": "./pages/normal/page-8.jpg",
+      "large": "./pages/large/page-8.jpg",
+      "id": "page-1b064c0a-7b66-45a2-acfd-db44b12c7892",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 9,
+      "thumb": "./pages/thumb/page-9.jpg",
+      "normal": "./pages/normal/page-9.jpg",
+      "large": "./pages/large/page-9.jpg",
+      "id": "page-f64421ee-a0e6-449c-874a-dc0b206e38ac",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 10,
+      "thumb": "./pages/thumb/page-10.jpg",
+      "normal": "./pages/normal/page-10.jpg",
+      "large": "./pages/large/page-10.jpg",
+      "id": "page-2d027377-e458-4d51-9fde-c03c1626df9e",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 11,
+      "thumb": "./pages/thumb/page-11.jpg",
+      "normal": "./pages/normal/page-11.jpg",
+      "large": "./pages/large/page-11.jpg",
+      "id": "page-db5eed16-398e-47c9-adf4-e38238be210a",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 12,
+      "thumb": "./pages/thumb/page-12.jpg",
+      "normal": "./pages/normal/page-12.jpg",
+      "large": "./pages/large/page-12.jpg",
+      "id": "page-bf119e94-5619-444a-b679-a7d66edf21cd",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 13,
+      "thumb": "./pages/thumb/page-13.jpg",
+      "normal": "./pages/normal/page-13.jpg",
+      "large": "./pages/large/page-13.jpg",
+      "id": "page-b487189e-5eb2-49aa-879b-5a2c64ed36cd",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 14,
+      "thumb": "./pages/thumb/page-14.jpg",
+      "normal": "./pages/normal/page-14.jpg",
+      "large": "./pages/large/page-14.jpg",
+      "id": "page-8dc9f8b6-18e9-4acf-a50d-ce0af4f85546",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 15,
+      "thumb": "./pages/thumb/page-15.jpg",
+      "normal": "./pages/normal/page-15.jpg",
+      "large": "./pages/large/page-15.jpg",
+      "id": "page-00eb628e-bfb7-46c4-b949-caf2d8afe889",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 16,
+      "thumb": "./pages/thumb/page-16.jpg",
+      "normal": "./pages/normal/page-16.jpg",
+      "large": "./pages/large/page-16.jpg",
+      "id": "page-970a71ab-9530-4369-80e3-abf0d7883022",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 17,
+      "thumb": "./pages/thumb/page-17.jpg",
+      "normal": "./pages/normal/page-17.jpg",
+      "large": "./pages/large/page-17.jpg",
+      "id": "page-1862c1e7-5d5d-4c28-84c1-08e99b4e433e",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 18,
+      "thumb": "./pages/thumb/page-18.jpg",
+      "normal": "./pages/normal/page-18.jpg",
+      "large": "./pages/large/page-18.jpg",
+      "id": "page-74cf4731-c3b5-4f4d-bbc9-66f11c203b67",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 19,
+      "thumb": "./pages/thumb/page-19.jpg",
+      "normal": "./pages/normal/page-19.jpg",
+      "large": "./pages/large/page-19.jpg",
+      "id": "page-52a3df04-b5ba-4d0f-8a62-52abc429c879",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 20,
+      "thumb": "./pages/thumb/page-20.jpg",
+      "normal": "./pages/normal/page-20.jpg",
+      "large": "./pages/large/page-20.jpg",
+      "id": "page-b378ff7c-eb68-4411-b99d-f6996d094617",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 21,
+      "thumb": "./pages/thumb/page-21.jpg",
+      "normal": "./pages/normal/page-21.jpg",
+      "large": "./pages/large/page-21.jpg",
+      "id": "page-1313ce25-6558-44cd-b0e6-ed4c30b6f30f",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 22,
+      "thumb": "./pages/thumb/page-22.jpg",
+      "normal": "./pages/normal/page-22.jpg",
+      "large": "./pages/large/page-22.jpg",
+      "id": "page-47317c17-fcb0-463c-bb10-96ad11c38619",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 23,
+      "thumb": "./pages/thumb/page-23.jpg",
+      "normal": "./pages/normal/page-23.jpg",
+      "large": "./pages/large/page-23.jpg",
+      "id": "page-7e5e99f3-2609-4612-8eab-5185f808c4b9",
+      "background": "#ffffff",
+      "elements": []
+    },
+    {
+      "index": 24,
+      "thumb": "./pages/thumb/page-24.jpg",
+      "normal": "./pages/normal/page-24.jpg",
+      "large": "./pages/large/page-24.jpg",
+      "id": "page-76556464-4eaf-4729-b3f8-0b8835e78299",
+      "background": "#ffffff",
+      "elements": []
+    }
+  ],
+  "pdfUrl": "./source.pdf",
+  "createdAt": 1795110162927,
+  "updatedAt": 1795110162927,
+  "published": true,
+  "toc": [],
+  "settings": {
+    "flipSound": true,
+    "flipDuration": 800,
+    "hardCover": true,
+    "rtl": false,
+    "singlePageMode": "auto",
+    "bgColor": "#2b2b2b",
+    "bgColor2": "#161616",
+    "accent": "#1e40af",
+    "showThumbnails": true,
+    "allowDownload": true,
+    "allowPrint": true,
+    "autoFlipSeconds": 0,
+    "backgroundImage": null,
+    "logoUrl": null,
+    "logoLink": null,
+    "logoWidth": 120
+  },
+  "links": [],
+  "sfx": {
+    "flip": [
+      "../../assets/sfx/flip.mp3"
+    ],
+    "hard": null
+  }
+}
